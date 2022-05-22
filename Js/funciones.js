@@ -1,9 +1,12 @@
-var num1;
-var operacion;
-var num2;
+// Objeto
+const Calculadora={
+    num1:0,
+    operacion:'',
+}
 
+// variables
 function init(){
-   // alert("hola");
+
 
     var resultado=document.getElementById('resultado');
     var cero=document.getElementById("cero");
@@ -23,7 +26,7 @@ function init(){
     var reset=document.getElementById("reset");
 
 
-
+//Eventos
     cero.onclick=function(e){
         resultado.textContent=resultado.textContent+"0";
     }
@@ -59,23 +62,24 @@ function init(){
     }
 
     sumar.onclick=function(e){
-        num1=resultado.textContent;
-        operacion="+";
+        
+        Calculadora.num1=resultado.textContent;
+        Calculadora.operacion='+';
         limpiar();
     }
     restar.onclick=function(e){
-        num1=resultado.textContent;
-        operacion="-";
+        Calculadora.num1=resultado.textContent;
+        Calculadora.operacion='-';
         limpiar();
     }
     multiplicar.onclick=function(e){
-        num1=resultado.textContent;
-        operacion="*";
+        Calculadora.num1=resultado.textContent;
+        Calculadora.operacion='*';
         limpiar();
     }
     dividir.onclick=function(e){
-        num1=resultado.textContent;
-        operacion="/";
+        Calculadora.num1=resultado.textContent;
+        Calculadora.operacion='/';
         limpiar();
     }
     //************************ */
@@ -93,25 +97,29 @@ function limpiar(){
 }
 function resetear(){
     resultado.textContent="";
-    num1=0;
     num2=0;
-    operacion="";
+    Calculadora.num1=0;
+    Calculadora.operacion='';
+    
 
 }
 function resolver(){
+    console.log(Calculadora);
+    console.log(Calculadora.num1);
+    console.log(Calculadora.operacion);
     var res=0;
-    switch(operacion){
+    switch(Calculadora.operacion){
         case "+":
-            res=parseFloat(num1)+parseFloat(num2);
+            res=parseFloat(Calculadora.num1)+parseFloat(num2);
             break;
         case "-":
-            res=parseFloat(num1)-parseFloat(num2);
+            res=parseFloat(Calculadora.num1)-parseFloat(num2);
             break;
         case "*":
-            res=parseFloat(num1)*parseFloat(num2);
+            res=parseFloat(Calculadora.num1)*parseFloat(num2);
             break;
         case "/":
-            res=parseFloat(num1)/parseFloat(num2);
+            res=parseFloat(Calculadora.num1)/parseFloat(num2);
             break;
     }
     resetear();
